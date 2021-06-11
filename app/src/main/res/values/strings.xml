@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Nykaa-Library</string>
+    <string name="start_session">Enter to Library</string>
+    <string name="remaining">remaining</string>
+    <string name="end_session">Exit from Library</string>
+    <string name="history">History</string>
+    <string name="start_time">Start Time :</string>
+    <string name="end_time">End Time</string>
+    <string name="session_time">Session Time</string>
+    <string name="ongoing">Ongoing</string>
+</resources>

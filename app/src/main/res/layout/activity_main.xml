@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.sd.nykaa_library.ui.main.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.MainActivity">
+
+        <include
+            android:id="@+id/toolbarLayout"
+            layout="@layout/toolbar_layout" />
+
+        <TextView
+            android:gravity="center"
+            android:text="@{viewModel.textToShow}"
+            android:id="@+id/txtTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?colorPrimary"
+            android:textSize="@dimen/_30ssp"
+            android:textStyle="bold|italic"
+            android:visibility="@{safeUnbox(viewModel.activeSession)?View.VISIBLE:View.GONE,default=gone}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="30 min 10 secs" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/remaining"
+            android:textColor="?colorPrimary"
+            android:textSize="@dimen/_25ssp"
+            android:textStyle="italic"
+            android:visibility="@{safeUnbox(viewModel.activeSession)?View.VISIBLE:View.GONE,default=gone}"
+            app:layout_constraintEnd_toEndOf="@id/txtTime"
+            app:layout_constraintStart_toStartOf="@id/txtTime"
+            app:layout_constraintTop_toBottomOf="@id/txtTime" />
+
+        <com.google.android.material.button.MaterialButton
+            android:onClick="@{()->viewModel.toggleSession()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:text="@{safeUnbox(!viewModel.activeSession)?@string/start_session:@string/end_session}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
